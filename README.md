@@ -15,3 +15,8 @@ Study Program : Informatics Engineering
 name: Maulid Yuswan Hidayat 
 nim: 20230040068 
 study program: Informatics engineering
+
+Name: Wildan Fadillah
+Student Number: 2023004045
+Study Program: Informatics Engineering
+
