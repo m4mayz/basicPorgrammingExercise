@@ -7,3 +7,7 @@ Study Program: Informatics Engineering
 Name: Dikri Ali
 Student Number: 20230040064
 Study Program: Informatic Engineering
+
+Name : Enjeli
+Student Number : 20230040058
+Study Program : Informatics Engineering
