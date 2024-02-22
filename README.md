@@ -20,3 +20,6 @@ Name: Wildan Fadillah
 Student Number: 2023004045
 Study Program: Informatics Engineering
 
+Name: Rizki Maulana
+Student Number: 2023004035
+Study Program: Informatics Engineering
