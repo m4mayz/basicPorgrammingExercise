@@ -1,3 +1,5 @@
+#Write a Python script that calculates the sum of digits in a given integer.
+
 #Define a function
 def sum_of_digits(n):
     return sum(int(digit) for digit in str(n))
