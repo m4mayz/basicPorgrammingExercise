@@ -9,13 +9,13 @@ while True:
         
         if (x == y):
         #if the first number and second number are equal
-            print(f"{x} and {y} are equal.")
+            print(f"The first number: {x} and second number: {y} are equal.")
         elif (x > y):
         #if the first number is greater than second number
-            print(f"{x} is greater than {y}.")
+            print(f"The first number: {x} is greater than second number: {y}.")
         elif (x < y):
         #if the second number is greater than first number
-            print(f"{y} is greater than {x}.")
+            print(f"The second number: {y} is greater than first number: {x}.")
         
         #stop looping
         break
