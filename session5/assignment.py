@@ -4,75 +4,65 @@
 # at the end it will be seen how many transactions and profits
 # make a simple application for the problem
 
-class Item:
-    def __init__(self, name, price, stock):
-        self.name = name
-        self.price = price
-        self.stock = stock
+# Set item [name, price, stock]
+item1 = ["Mascara"      , 100000, 10]
+item2 = ["Lipstick"     , 150000, 5]
+item3 = ["Foundation"   , 200000, 2]
+item4 = ["Eyeliner"     , 150000, 7]
+item5 = ["Brush"        , 50000 , 4]
 
-class Store:
-    def __init__(self):
-        self.items = []
-        self.transactions = 0
-        self.profit = 0
+# Set transaction
+trans = 0
+profit = 0
 
-    def add_item(self, name, price, stock):
-        self.items.append(Item(name, price, stock))
-
-    def sell_item(self, option):
-        if option > 0 and option <= len(self.items):
-            item = self.items[option - 1]
-            if item.stock > 0:
-                item.stock -= 1
-                self.transactions += 1
-                self.profit += item.price * 0.10
-                print()
-                print(f"Selling {item.name} for Rp. {float(item.price + (item.price * 0.10))}. Remaining stock: {item.stock}")
-            else:
-                print()
-                print(f"Sorry, {item.name} is out of stock.")
-        else:
-            print(f"Invalid option. Please try again.")
-
-    def report(self):
-        print("=============================")
-        print(f"Total transactions: {self.transactions}")
-        print(f"Total profit: Rp.{float(self.profit)}")
-        print()
-
-    def print_items(self):
-        for i, item in enumerate(self.items, start=1):
-            print(f"{i}. {item.name} - Price: Rp.{item.price + (item.price * 0.10)}, Stock: {item.stock}")
-
-# Create a store
-store = Store()
-
-# Add some items
-store.add_item("Lipstick", 100000, 10)
-store.add_item("Mascara", 150000, 4)
-store.add_item("Foundation", 200000, 5)
-store.add_item("Eyeliner", 50000, 10)
-store.add_item("Blush", 120000, 7)
-
-while True:
-    print()
-    print("List of cosmetics (price is within 10% of the original price): ")
-    store.print_items()
-    print("===============================================================")
-    print("Menu:")
-    print("1. Sell item")
-    print("2. Report")
-    print("3. Exit")
-    choice = input("Enter your choice: ")
-
-    if choice == '1':
-        print("=============================")
-        option = int(input("Enter the option of the item to sell: "))
-        store.sell_item(option)
-        store.report()
-    elif choice == '2':
-        store.report()
-    elif choice == '3':
-        break
+# Define a function transaction
+def transaction(item):
+    global profit
+    global trans
+    if item[2] == 0:
+        print(f"{item[0]} is out of stock.\n")
     else:
-        print("Invalid choice. Please try again.")
+        much = int(input("How Much?: "))
+        if much > item[2]:
+            print(f"Insufficient Stock. {item[2]} {item[0]}s available.\n")
+        else:
+            item[2] -= much
+            total = int(much * (item[1] + (item[1] * 0.10)))
+            profit += int(much * (item[1] * 0.10))
+            trans += 1
+            
+            print(f"\n Selling {much} {item[0]}")
+            print(f" Total \t\t\t: RP. {total:,}")
+            display()
+            print(f" Today transaction \t: {trans}")
+            print(f" Today Profit \t\t: RP. {profit:,}")
+            print("----------------------------------------------------------------")
+
+# Display the name of the item price and available stock.
+def display():
+    print("\n COSMETIC LISTS & PRICES : \n----------------------------------------------------------------")
+    print("No.| Name\t\t| Supplier Price\t| Price to Sell\t| Stock\n----------------------------------------------------------------")
+    print(f"1.   {item1[0]}\t\t  Rp. {item1[1]:,}\t\t  Rp. {int(item1[1] + (item1[1] * 0.10)):,}\t  {item1[2]}")
+    print(f"2.   {item2[0]}\t\t  Rp. {item2[1]:,}\t\t  Rp. {int(item2[1] + (item2[1] * 0.10)):,}\t  {item2[2]}")
+    print(f"3.   {item3[0]}\t\t  Rp. {item3[1]:,}\t\t  Rp. {int(item3[1] + (item3[1] * 0.10)):,}\t  {item3[2]}")
+    print(f"4.   {item4[0]}\t\t  Rp. {item4[1]:,}\t\t  Rp. {int(item4[1] + (item4[1] * 0.10)):,}\t  {item4[2]}")
+    print(f"5.   {item5[0]}\t\t  Rp. {item5[1]:,}\t\t  Rp. {int(item5[1] + (item5[1] * 0.10)):,}\t  {item5[2]}")
+    print("----------------------------------------------------------------")
+display()
+
+# Sell
+while True:
+    menu = input("Enter the item (number) you want to sell: ")
+    if menu == '1':
+        transaction(item1)
+    elif menu == '2':
+        transaction(item2)
+    elif menu == '3':
+        transaction(item3)
+    elif menu == '4':
+        transaction(item4)
+    elif menu == '5':
+        transaction(item5)
+    else:
+        print("\nBye bye.\n")
+        break
